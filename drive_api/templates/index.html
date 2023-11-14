@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive API</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Приятный фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff; /* Цвет фона формы */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; /* Adjusted to a column layout */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        input,
+        textarea {
+            width: 100%; /* Adjusted width to full width */
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%; /* Adjusted width to full width */
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4caf50; /* Цвет кнопки */
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <form {% url 'index' %} method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file_name">Имя файла:</label>
+            <input type="text" name="file_name" id="file_name" placeholder="Введите имя файла" required>
+
+            <label for="file_content">Содержимое файла:</label>
+            <textarea name="file_content" id="file_content" placeholder="Введите содержимое файла" required></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

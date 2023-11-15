@@ -7,7 +7,7 @@ __pycache__/
 /.DS_Store
 # Environments
 .DS_Store
-client_secrets.json
+
 .env
 new_db
 .venv

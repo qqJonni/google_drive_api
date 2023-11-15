@@ -1,12 +1,16 @@
 from django.shortcuts import render
 
-from pydrive.auth import GoogleAuth
+from pydrive.auth import GoogleAuth, ServiceAccountCredentials
 from pydrive.drive import GoogleDrive
 
+# Проходим аутентификацию
 gauth = GoogleAuth()
-gauth.LocalWebserverAuth()
+gauth.auth_method = 'service'
+gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name('spatial-rig-405119-fe340bde0489.json',
+                                                                     ['https://www.googleapis.com/auth/drive'])
 
 
+# Создаём отправляем файл на Google Disc
 def create_and_upload_file(file_name='name.txt', file_content='data'):
 
     try:
@@ -21,6 +25,7 @@ def create_and_upload_file(file_name='name.txt', file_content='data'):
         return 'Got some trouble. Check your code please'
 
 
+# Вьюха
 def index(request):
     file_name = request.POST.get('file_name')
     file_content = request.POST.get('file_content')

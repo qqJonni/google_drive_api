@@ -7,7 +7,8 @@ __pycache__/
 /.DS_Store
 # Environments
 .DS_Store
-
+client_secrets.json
+spatial-rig-405119-fe340bde0489.json
 .env
 new_db
 .venv
